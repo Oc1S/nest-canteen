@@ -9,7 +9,7 @@ export class User extends BaseEntity {
 
   @Column({
     type: 'varchar',
-    default: 'tva1.sinaimg.cn/large/006wJXbzly1h2wlqi815bj30b40b4750',
+    default: 'http://tva1.sinaimg.cn/large/006wJXbzly1h2wlqi815bj30b40b4750',
   })
   avatar: string;
 

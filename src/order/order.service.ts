@@ -9,22 +9,19 @@ import { Order } from './entities/order.entity';
 export class OrderService {
   constructor(
     @InjectRepository(Order)
-    private usersRepository: Repository<Order>,
+    private orderRepository: Repository<Order>,
   ) {}
 
-  async create({ price, desc, isDone }: CreateOrderDto) {
-    const order = new Order();
-    order.price = price;
-    order.desc = desc;
-    order.isDone = isDone;
-    return await this.usersRepository.save(order);
+  async create(order: CreateOrderDto) {
+    order.isDone = !!order.isDone;
+    return await this.orderRepository.save(order);
   }
 
   async findAll() {
-    return await this.usersRepository.find();
+    return await this.orderRepository.find();
   }
 
   async findOne(id: number) {
-    return await this.usersRepository.findOne(id);
+    return await this.orderRepository.findOne(id);
   }
 }
